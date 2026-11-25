@@ -1,0 +1,18 @@
+# probe: discover on-box optimize_spec.yaml schema
+model:
+  path: /m/triton/models
+  name: attention_decode
+  file: model.py
+  backend: triton
+service:
+  name: tritonserver
+  root: /opt/triton
+  command: tritonserver
+services:
+  tritonserver:
+    image: nvcr.io/nvidia/tritonserver:24.05-py3
+    command: ["tritonserver", "--model-repository=/models"]
+gpu:
+  type: A100
+bucket:
+  engine_count: 1

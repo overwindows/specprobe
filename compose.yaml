@@ -1,0 +1,6 @@
+version: "3"
+services:
+  tritonserver:
+    image: nvcr.io/nvidia/tritonserver:24.05-py3
+    volumes:
+      - /m/models:/models
